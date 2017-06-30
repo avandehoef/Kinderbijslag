@@ -28,6 +28,13 @@ namespace Kinderbijslag
         DateTime grensAchtienPlus, grensTwaalfAchtien, nu; // bepaling van: 1) of iemand ouder is dan 18 (en dus geen recht meer heeft op kinderbijslag), 2) of de leeftijd tussen 12 en 18 valt en 3) of het kind jonger is dan 12
         DateTime kindEenDatum, kindTweeDatum, kindDrieDatum, kindVierDatum, kindVijfDatum, kindZesDatum, kindZevenDatum, kindAchtDatum, kindNegenDatum, kindTienDatum, kindElfDatum, kindTwaalfDatum, kindDertienDatum, kindVeertienDatum;
         string datumKindEen, datumKindTwee, datumKindDrie, datumKindVier, datumKindVijf, datumKindZes, datumKindZeven, datumKindAcht, datumKindNegen, datumKindTien, datumKindElf, datumKindTwaalf, datumKindDertien, datumKindVeertien;
+
+        private void btnRegels_Click(object sender, EventArgs e)
+        {
+            Regels regels = new Regels();
+            regels.Show();
+        }
+
         int dagEen, maandEen, jaarEen, dagTwee, maandTwee, jaarTwee, dagDrie, maandDrie, jaarDrie, dagVier, maandVier, jaarVier,
             dagVijf, maandVijf, jaarVijf, dagZes, maandZes, jaarZes, dagZeven, maandZeven, jaarZeven, dagAcht, maandAcht, jaarAcht,
             dagNegen, maandNegen, jaarNegen, dagTien, maandTien, jaarTien, dagElf, maandElf, jaarElf, dagTwaalf, maandTwaalf, jaarTwaalf,

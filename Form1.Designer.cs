@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kinderbijslag));
             this.textBoxWelcome = new System.Windows.Forms.TextBox();
             this.textBoxPeilDatum = new System.Windows.Forms.TextBox();
             this.textBoxAantalKinderen = new System.Windows.Forms.TextBox();
@@ -108,6 +109,7 @@
             this.textBoxFoutElf = new System.Windows.Forms.TextBox();
             this.textBoxFoutTien = new System.Windows.Forms.TextBox();
             this.textBoxFoutNegen = new System.Windows.Forms.TextBox();
+            this.btnRegels = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxWelcome
@@ -355,7 +357,8 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(1001, 112);
+            this.btnClose.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnClose.Location = new System.Drawing.Point(1125, 112);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(119, 50);
             this.btnClose.TabIndex = 19;
@@ -366,7 +369,8 @@
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(876, 112);
+            this.btnReset.ForeColor = System.Drawing.Color.IndianRed;
+            this.btnReset.Location = new System.Drawing.Point(1000, 112);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(119, 50);
             this.btnReset.TabIndex = 20;
@@ -1875,13 +1879,25 @@
             this.textBoxFoutNegen.Size = new System.Drawing.Size(509, 25);
             this.textBoxFoutNegen.TabIndex = 74;
             // 
+            // btnRegels
+            // 
+            this.btnRegels.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegels.Location = new System.Drawing.Point(876, 112);
+            this.btnRegels.Name = "btnRegels";
+            this.btnRegels.Size = new System.Drawing.Size(119, 50);
+            this.btnRegels.TabIndex = 80;
+            this.btnRegels.Text = "regels";
+            this.btnRegels.UseVisualStyleBackColor = true;
+            this.btnRegels.Click += new System.EventHandler(this.btnRegels_Click);
+            // 
             // Kinderbijslag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1253, 450);
+            this.ClientSize = new System.Drawing.Size(1300, 450);
+            this.Controls.Add(this.btnRegels);
             this.Controls.Add(this.textBoxFoutVeertien);
             this.Controls.Add(this.textBoxFoutDertien);
             this.Controls.Add(this.textBoxFoutTwaalf);
@@ -1962,7 +1978,12 @@
             this.Controls.Add(this.textBoxAantalKinderen);
             this.Controls.Add(this.textBoxPeilDatum);
             this.Controls.Add(this.textBoxWelcome);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Kinderbijslag";
+            this.Opacity = 0.98D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bereken hoogte kinderbijslag";
             this.Load += new System.EventHandler(this.Kinderbijslag_Load);
             this.ResumeLayout(false);
@@ -2052,6 +2073,7 @@
         private System.Windows.Forms.TextBox textBoxFoutElf;
         private System.Windows.Forms.TextBox textBoxFoutTien;
         private System.Windows.Forms.TextBox textBoxFoutNegen;
+        private System.Windows.Forms.Button btnRegels;
     }
 }
 
