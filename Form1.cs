@@ -48,68 +48,60 @@ namespace Kinderbijslag
         private void cBoxAantalKinderen_SelectedIndexChanged(object sender, EventArgs e)
         {
             aantalKinderen = Convert.ToInt16(cBoxAantalKinderen.Text);
-            if (aantalKinderen == 1)
+            switch (aantalKinderen)
             {
-                kindEen();
-            }
-            else if (aantalKinderen ==2)
-            {
-                kindTwee();
-            }
-            else if (aantalKinderen == 3)
-            {
-                kindDrie();
-            }
-            else if (aantalKinderen == 4)
-            {
-                kindVier();
-            }
-            else if (aantalKinderen == 5)
-            {
-                kindVijf();
-            }
-            else if (aantalKinderen == 6)
-            {
-                kindZes();
-            }
-            else if (aantalKinderen == 7)
-            {
-                kindZeven();
-            }
-            else if (aantalKinderen == 8)
-            {
-                kindAcht();
-            }
-            else if (aantalKinderen == 9)
-            {
-                kindNegen();
-            }
-            else if (aantalKinderen == 10)
-            {
-                kindTien();
-            }
-            else if (aantalKinderen == 11)
-            {
-                kindElf();                
-            }
-            else if (aantalKinderen == 12)
-            {
-                kindTwaalf();
-            }
-            else if (aantalKinderen == 13)
-            {
-                kindDertien();
-            }
-            else if (aantalKinderen == 14)
-            {
-                kindVeertien();
-            }
+                case 1:
+                    kindEen();
+                    break;
+                case 2:
+                    kindTwee();
+                    break;
+                case 3:
+                    kindDrie();
+                    break;
+                case 4:
+                    kindVier();
+                    break;
+                case 5:
+                    kindVijf();
+                    break;
+                case 6:
+                    kindZes();
+                    break;
+                case 7:
+                    kindZeven();
+                    break;
+                case 8:
+                    kindAcht();
+                    break;
+                case 9:
+                    kindNegen();
+                    break;
+                case 10:
+                    kindTien();
+                    break;
+                case 11:
+                    kindElf();
+                    break;
+                case 12:
+                    kindTwaalf();
+                    break;
+                case 13:
+                    kindDertien();
+                    break;
+                case 14:
+                    kindVeertien();
+                    break;
+            }            
         }
 
         private void Kinderbijslag_Load(object sender, EventArgs e)
         {
-            cBoxAantalKinderen.SelectedIndex = 0;
             defaultState();
+            foreach (var cb in Controls.OfType<ComboBox>())
+            {
+                    cb.SelectedIndex = 0;
+            }
             textBoxGebDatumEen.Visible = true;
             cBoxKindEenDag.Visible = true;
             cBoxKindEenMaand.Visible = true;
@@ -141,69 +133,57 @@ namespace Kinderbijslag
         private void btnBereken_Click(object sender, EventArgs e)
         {
             foutCorrectieTemp = 0;
-
-            if (cBoxAantalKinderen.Text == "1")
-            {
-                kindEenLeeftijd();                
-            }
-            else if (cBoxAantalKinderen.Text == "2")
-            {
-                kindTweeLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "3")
-            {
-                kindDrieLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "4")
-            {
-                kindVierLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "5")
-            {
-                kindVijfLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "6")
-            {
-                kindZesLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "7")
-            {
-                kindZevenLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "8")
-            {
-                kindAchtLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "9")
-            {
-                kindNegenLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "10")
-            {
-                kindTienLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "11")
-            {
-                kindElfLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "12")
-            {
-                kindTwaalfLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "13")
-            {
-                kindDertienLeeftijd();
-            }
-            else if (cBoxAantalKinderen.Text == "14")
-            {
-                kindVeertienLeeftijd();
-            }
-            else
-            {
-                textBoxFout.Text = "Er is iets fout gegaan; probeer opnieuw";
-            }
-
             aantalKinderen = Convert.ToInt16(cBoxAantalKinderen.Text);
+
+            switch (aantalKinderen)
+            {
+                case 1:
+                    kindEenLeeftijd();
+                    break;
+                case 2:
+                    kindTweeLeeftijd();
+                    break;
+                case 3:
+                    kindDrieLeeftijd();
+                    break;
+                case 4:
+                    kindVierLeeftijd();
+                    break;
+                case 5:
+                    kindVijfLeeftijd();
+                    break;
+                case 6:
+                    kindZesLeeftijd();
+                    break;
+                case 7:
+                    kindZevenLeeftijd();
+                    break;
+                case 8:
+                    kindAchtLeeftijd();
+                    break;
+                case 9:
+                    kindNegenLeeftijd();
+                    break;
+                case 10:
+                    kindTienLeeftijd();
+                    break;
+                case 11:
+                    kindElfLeeftijd();
+                    break;
+                case 12:
+                    kindTwaalfLeeftijd();
+                    break;
+                case 13:
+                    kindDertienLeeftijd();
+                    break;
+                case 14:
+                    kindVeertienLeeftijd();
+                    break;
+                default:
+                    textBoxFout.Text = "Er is iets fout gegaan; probeer opnieuw";
+                    break;
+            }
+
             foutCorrectie = aantalKinderen - foutCorrectieTemp;
 
             if (aantalKinderen == 3 || aantalKinderen == 4)
