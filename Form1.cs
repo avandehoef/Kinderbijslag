@@ -28,6 +28,57 @@ namespace Kinderbijslag
         DateTime grensAchtienPlus, grensTwaalfAchtien, nu; // bepaling van: 1) of iemand ouder is dan 18 (en dus geen recht meer heeft op kinderbijslag), 2) of de leeftijd tussen 12 en 18 valt en 3) of het kind jonger is dan 12
         DateTime kindEenDatum, kindTweeDatum, kindDrieDatum, kindVierDatum, kindVijfDatum, kindZesDatum, kindZevenDatum, kindAchtDatum, kindNegenDatum, kindTienDatum, kindElfDatum, kindTwaalfDatum, kindDertienDatum, kindVeertienDatum;
         string datumKindEen, datumKindTwee, datumKindDrie, datumKindVier, datumKindVijf, datumKindZes, datumKindZeven, datumKindAcht, datumKindNegen, datumKindTien, datumKindElf, datumKindTwaalf, datumKindDertien, datumKindVeertien;
+        int dagEen, maandEen, jaarEen, dagTwee, maandTwee, jaarTwee, dagDrie, maandDrie, jaarDrie, dagVier, maandVier, jaarVier,
+            dagVijf, maandVijf, jaarVijf, dagZes, maandZes, jaarZes, dagZeven, maandZeven, jaarZeven, dagAcht, maandAcht, jaarAcht,
+            dagNegen, maandNegen, jaarNegen, dagTien, maandTien, jaarTien, dagElf, maandElf, jaarElf, dagTwaalf, maandTwaalf, jaarTwaalf,
+            dagDertien, maandDertien, jaarDertien, dagVeertien, maandVeertien, jaarVeertien;
+
+        private void Kinderbijslag_Load(object sender, EventArgs e)
+        {
+            defaultState();
+            foreach (var cb in Controls.OfType<ComboBox>())
+            {
+                cb.SelectedIndex = 0;
+            }
+            textBoxGebDatumEen.Visible = true;
+            cBoxKindEenDag.Visible = true;
+            cBoxKindEenMaand.Visible = true;
+            cBoxKindEenJaar.Visible = true;
+            cBoxKindEenDag.Enabled = true;
+            cBoxKindEenMaand.Enabled = true;
+            cBoxKindEenJaar.Enabled = true;
+        }
+
+        private void defaultState()
+        {
+            subEen = 0; subTwee = 0; subDrie = 0; subVier = 0; subVijf = 0; subZes = 0; subZeven = 0; subAcht = 0; subNegen = 0; subTien = 0; subElf = 0; subTwaalf = 0; subDertien = 0; subVeertien = 0;
+
+            foreach (var cb in Controls.OfType<ComboBox>())
+            {
+                if (Controls.OfType<ComboBox>() != cBoxAantalKinderen)
+                {
+                    //cb.SelectedIndex = 0;
+                    cb.Enabled = false;
+                    cb.Visible = false;
+                }
+            }
+            cBoxAantalKinderen.Visible = true;
+            cBoxAantalKinderen.Enabled = true;
+
+            foreach (var txt in Controls.OfType<TextBox>())
+            {
+                txt.Visible = false;
+            }
+            textBoxWelcome.Visible = true;
+            textBoxPeilDatum.Visible = true;
+            textBoxAantalKinderen.Visible = true;
+            textBoxPeilDatum.Text = "Peildatum: " + DateTime.Now.ToShortDateString();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
         private void btnRegels_Click(object sender, EventArgs e)
         {
@@ -35,14 +86,23 @@ namespace Kinderbijslag
             regels.Show();
         }
 
-        int dagEen, maandEen, jaarEen, dagTwee, maandTwee, jaarTwee, dagDrie, maandDrie, jaarDrie, dagVier, maandVier, jaarVier,
-            dagVijf, maandVijf, jaarVijf, dagZes, maandZes, jaarZes, dagZeven, maandZeven, jaarZeven, dagAcht, maandAcht, jaarAcht,
-            dagNegen, maandNegen, jaarNegen, dagTien, maandTien, jaarTien, dagElf, maandElf, jaarElf, dagTwaalf, maandTwaalf, jaarTwaalf,
-            dagDertien, maandDertien, jaarDertien, dagVeertien, maandVeertien, jaarVeertien;
-
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)
         {
-            Close();
+            defaultState();
+            foreach (var cb in Controls.OfType<ComboBox>())
+            {
+                if (Controls.OfType<ComboBox>() != cBoxAantalKinderen)
+                {
+                    cb.SelectedIndex = 0;
+                }
+            }
+            textBoxGebDatumEen.Visible = true;
+            cBoxKindEenDag.Visible = true;
+            cBoxKindEenMaand.Visible = true;
+            cBoxKindEenJaar.Visible = true;
+            cBoxKindEenDag.Enabled = true;
+            cBoxKindEenMaand.Enabled = true;
+            cBoxKindEenJaar.Enabled = true;
         }
 
         private void cBoxAantalKinderen_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,41 +153,6 @@ namespace Kinderbijslag
                     kindVeertien();
                     break;
             }            
-        }
-
-        private void Kinderbijslag_Load(object sender, EventArgs e)
-        {
-            defaultState();
-            foreach (var cb in Controls.OfType<ComboBox>())
-            {
-                    cb.SelectedIndex = 0;
-            }
-            textBoxGebDatumEen.Visible = true;
-            cBoxKindEenDag.Visible = true;
-            cBoxKindEenMaand.Visible = true;
-            cBoxKindEenJaar.Visible = true;
-            cBoxKindEenDag.Enabled = true;
-            cBoxKindEenMaand.Enabled = true;
-            cBoxKindEenJaar.Enabled = true;
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            defaultState();            
-            foreach (var cb in Controls.OfType<ComboBox>())
-            {
-                if (Controls.OfType<ComboBox>() != cBoxAantalKinderen)
-                {
-                    cb.SelectedIndex = 0;
-                }
-            }            
-            textBoxGebDatumEen.Visible = true;
-            cBoxKindEenDag.Visible = true;
-            cBoxKindEenMaand.Visible = true;
-            cBoxKindEenJaar.Visible = true;
-            cBoxKindEenDag.Enabled = true;
-            cBoxKindEenMaand.Enabled = true;
-            cBoxKindEenJaar.Enabled = true;
         }
 
         private void btnBereken_Click(object sender, EventArgs e)
@@ -195,7 +220,7 @@ namespace Kinderbijslag
                 else
                 {
                     totaal = (subEen + subTwee + subDrie + subVier);
-                }                
+                }
             }
             else if (aantalKinderen == 5)
             {
@@ -239,6 +264,22 @@ namespace Kinderbijslag
 
             textBoxResult.Visible = true;
             textBoxResult.Text = "De kinderbijslag per kwartaal is: " + totaal.ToString("C");
+        }
+
+        public void datumBepaling()
+        {
+            nu = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            grensAchtienPlus = nu.AddYears(-18);
+            grensTwaalfAchtien = nu.AddYears(-12);
+
+            try
+            {
+                aantalKinderen = Convert.ToInt16(cBoxAantalKinderen.Text);
+            }
+            catch
+            {
+                textBoxFout.Text = "geef aantal kinderen op";
+            }
         }
 
         public void kindEenLeeftijd()
@@ -1038,49 +1079,7 @@ namespace Kinderbijslag
             {
 
             }
-        }
-
-        public void datumBepaling()
-        {
-            nu = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-            grensAchtienPlus = nu.AddYears(-18);
-            grensTwaalfAchtien = nu.AddYears(-12);
-
-            try
-            {
-                aantalKinderen = Convert.ToInt16(cBoxAantalKinderen.Text);
-            }
-            catch
-            {
-                textBoxFout.Text = "geef aantal kinderen op";
-            }
-        }
-
-        private void defaultState()
-        {
-            subEen = 0; subTwee = 0; subDrie = 0; subVier = 0; subVijf = 0; subZes = 0; subZeven = 0; subAcht = 0; subNegen = 0; subTien = 0; subElf = 0; subTwaalf = 0; subDertien = 0; subVeertien = 0;
-
-            foreach (var cb in Controls.OfType<ComboBox>())
-            {
-                if (Controls.OfType<ComboBox>() != cBoxAantalKinderen)
-                {
-                    //cb.SelectedIndex = 0;
-                    cb.Enabled = false;
-                    cb.Visible = false;
-                }                
-            }
-            cBoxAantalKinderen.Visible = true;
-            cBoxAantalKinderen.Enabled = true;            
-
-            foreach (var txt in Controls.OfType<TextBox>())
-            {
-                txt.Visible = false;
-            }
-            textBoxWelcome.Visible = true;
-            textBoxPeilDatum.Visible = true;
-            textBoxAantalKinderen.Visible = true;
-            textBoxPeilDatum.Text = "Peildatum: " + DateTime.Now.ToShortDateString();
-        }
+        }        
 
         private void kindEen()
         {
